@@ -23,7 +23,7 @@ function List() {
         <ul id="cocktaillist">
           {drinkList.map((drink) =>
           <li key={drink.name}>
-            <label for={drink.name}>{drink.name}</label>
+            <label htmlFor={drink.name}>{drink.name}</label>
             <br/>
             <img name={drink.name} src={drink.img} alt={drink.name} />
             <Button></Button>
