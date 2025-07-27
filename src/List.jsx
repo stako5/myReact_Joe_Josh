@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Button from './Button.jsx'
 
-function List() {
+function List({searchedDrinks}) {
   const [drinkList, setList] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:3001')
+  function fetchData(url){
+    console.log(url)
+    fetch(url)
       .then((result) => result.json())
       .then(data => setList(data.drinks.map((item) => {
           let itemObj = {}
@@ -13,8 +14,19 @@ function List() {
           itemObj.img = item.strDrinkThumb;
           return itemObj;
         })))
-  }, [])
+  }
 
+  useEffect(() => {
+    let url;
+    console.log(searchedDrinks)
+    if (searchedDrinks){
+      url = `http://localhost:3001/search/${searchedDrinks}`;
+    }
+    else{
+      url = 'http://localhost:3001'
+    }
+    fetchData(url);
+  }, [searchedDrinks])
 
   if (drinkList.length < 1) return 'loading drink list..'
   else if (drinkList.length >= 10) {
@@ -22,12 +34,15 @@ function List() {
       <>
         <ul id="cocktaillist">
           {drinkList.map((drink) =>
+          drinkList.indexOf(drink) < 10 ?
           <li key={drink.name}>
             <label htmlFor={drink.name}>{drink.name}</label>
             <br/>
             <img name={drink.name} src={drink.img} alt={drink.name} />
             <Button></Button>
           </li>
+          :
+          <></>
           )}
         </ul>
       </>
