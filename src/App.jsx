@@ -1,7 +1,5 @@
-import Button from './Button.jsx'
 import Searchbar from './Searchbar.jsx'
 import List from './List.jsx'
-
 
 function App() {
 
