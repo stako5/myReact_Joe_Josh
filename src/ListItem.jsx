@@ -8,6 +8,7 @@ function ListItem(props){
         <br/>
         <img name={props.itemName} src={props.imgUrl} alt={props.itemName} />
         <FavoritesButton></FavoritesButton>
+        <br />
       </li>
     </>
   )

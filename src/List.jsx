@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ListItem from './ListItem.jsx'
+
 function List(props) {
   const [drinkList, setList] = useState([])
 
@@ -16,20 +17,25 @@ function List(props) {
 
   useEffect(() => {
     let url;
-    if (props.searchedDrinks){
-      url = `http://localhost:3001/search/${props.searchedDrinks}`;
+    let user = props.query;
+    if(props.query) {
+      url = `http://localhost:3001/search/${user}/`
+      console.log(url)
     }
     else{
-      url = 'http://localhost:3001'
+    url = 'http://localhost:3001'
     }
     fetchData(url);
-  })
+
+  }, [])
+
+  
 
   if (drinkList.length < 1) return 'Loading drink list..'
   else if (drinkList.length >= 10) {
     return (
-      props.searchedDrinks ?
-      <ul key={props.searchedDrinks}>
+      props.query?
+      <ul key={props.idDrink}>
         {drinkList.map((drink) => {
           return <ListItem key={drink.name} itemName={drink.name} imgUrl={drink.img}></ListItem>
         })}

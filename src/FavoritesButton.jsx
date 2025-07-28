@@ -7,7 +7,7 @@ function FavoritesButton(props) {
   }
 
   return (
-    <button onClick={addToFavorites}>Add to favorites!</button>
+    <button id="favBtn" onClick={addToFavorites}>Add to favorites!</button>
   )
 }
 
