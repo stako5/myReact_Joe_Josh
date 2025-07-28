@@ -5,8 +5,8 @@ function App() {
 
   return (
     <>
-      <Searchbar></Searchbar>
-      <List></List>
+      <Searchbar key="primarySearch"></Searchbar>
+      <List key="firstList"></List>
     </>
   )
 }

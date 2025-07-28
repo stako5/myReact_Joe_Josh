@@ -23,7 +23,7 @@ function List(props) {
       url = 'http://localhost:3001'
     }
     fetchData(url);
-  }, [props.searchedDrinks])
+  })
 
   if (drinkList.length < 1) return 'Loading drink list..'
   else if (drinkList.length >= 10) {
@@ -31,13 +31,16 @@ function List(props) {
       props.searchedDrinks ?
       <ul key={props.searchedDrinks}>
         {drinkList.map((drink) => {
-          return <ListItem itemName={drink.name} imgUrl={drink.img}></ListItem>
+          return <ListItem key={drink.name} itemName={drink.name} imgUrl={drink.img}></ListItem>
         })}
       </ul>
       :
       <ul key="randomDrinks">
         {drinkList.map((drink) => {
-          return <ListItem itemName={drink.name} imgUrl={drink.img}></ListItem>
+          return drinkList.indexOf(drink) < 10 ?
+          <ListItem key={drink.name} itemName={drink.name} imgUrl={drink.img}></ListItem>
+          :
+          <></>
         })}
       </ul>
     )
