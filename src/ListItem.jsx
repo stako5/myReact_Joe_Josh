@@ -3,7 +3,7 @@ import FavoritesButton from './FavoritesButton.jsx'
 function ListItem(props){
   return (
     <>
-      <li key={props.itemName}>
+      <li key={props.itemName} favorites={favorites}>
         <label htmlFor={props.itemName}>{props.itemName}</label>
         <br/>
         <img name={props.itemName} src={props.imgUrl} alt={props.itemName} />

@@ -1,9 +1,9 @@
 function FavoritesButton(props) {
-  function addToFavorites(){
-    if (!props.userFavorites.isArray){
+  function addToFavorites(props){
+    if (!props.listItem){
       throw new Error("userFavorites must be an array.")
     }
-    props.userFavorites.push(props.listItem)
+    props.listItem.push(props.favorites)
   }
 
   return (

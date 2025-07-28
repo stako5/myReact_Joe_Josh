@@ -1,14 +1,14 @@
 import { useState, useEffect} from "react";
 import List from "./List.jsx"
 
-function Searchbar() {
-  const [query, setQuery] = useState("");
+function Searchbar(props) {
 
   return (
     <>
       <input type="text" placeholder="Search for an ingredient" onKeyUp= {
-        (event) => {
-          return event.key === "Enter" ? setQuery(event.target.value) : setQuery("") }}>
+                (e) => {
+                  return e.key === "Enter" ? props.setQuery(e.target.value) : props.setQuery("") 
+                }}>
       </input>
     </>
 
@@ -16,15 +16,3 @@ function Searchbar() {
 }
 
 export default Searchbar;
-
-
-
-//  {setUserSearch !== undefined ?  <List userSearch={setUserSearch}></List> : <></>}
-
-  // const [userSearch, setUserSearch] = useState(undefined)
-
-  // useEffect(() => {
-  //   if (query !== ""){
-  //     setUserSearch(query)
-  //   }
-  // // }, [query])
